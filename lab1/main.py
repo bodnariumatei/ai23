@@ -86,26 +86,17 @@ P5. Pentru un șir cu n elemente care conține valori din mulțimea {1, 2, ..., 
 astfel încât o singură valoare se repetă de două ori, să se identifice acea valoare care se repetă.
 De ex. în șirul [1,2,3,4,2] valoarea 2 apare de două ori.
 """
-
 # determina un numar care apare de doua ori intr-un sir
 # sir - list of int, un sir in care o singura valoare apare de doua ori
 # returns int
 def get_twin_number(sir: list):
-    # pregatim un dictionar pentru contorizarea aparitiilor numerelor
-    aparition_counter = {}
-    # iteram prin toate numerele din sirul dat
+    s = 0
     for n in sir:
-        # verificam daca exista numarul in dictionar
-        if n in aparition_counter:
-            # incrementam numarul de aparitii
-            aparition_counter[n] += 1
-        else:
-            # adaugam numarul in dictionar
-            aparition_counter[n] = 1
-    for n in aparition_counter:
-        # returneaza valoarea care apare de doua ori
-        if aparition_counter[n] == 2:
-            return n
+        s += n
+    lgt = len(sir)
+    sg = (lgt*(lgt - 1))/2
+    # suma elementelor din sir - suma lui gauss pana la n-1 = elementul care e dublat in sir
+    return s - sg
 
 
 """
@@ -181,9 +172,3 @@ def get_kth_biggest_number(sir: list, k: int):
     # se sorteaza sirul descrescator cu mergesort
     mergesort(sir)
     return sir[k-1]
-
-
-"""
-P8. Să se genereze toate numerele (în reprezentare binară) cuprinse între 1 și n. 
-De ex. dacă n = 4, numerele sunt: 1, 10, 11, 100.
-"""
